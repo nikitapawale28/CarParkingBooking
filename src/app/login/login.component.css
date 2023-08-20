@@ -1,0 +1,114 @@
+.login-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #050505;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #050505;
+  }
+
+  .app-header {
+    background-color: #050505;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .login-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .app-footer {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .signup-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .signup-link a {
+    color: #007bff;
+    text-decoration: none;
+  } 
+  
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+  
+  .error-message {
+    color: #ff5757; /* Red color */
+    font-size: 14px;
+    margin-top: 5px;
+    background-color: #ffe3e3; /* Light red background */
+    border: 1px solid #ff5757;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+
+.success-message {
+  color: #2ecc71; /* Green color */
+  font-size: 14px;
+  margin-top: 5px;
+  background-color: #e1f3db; /* Light green background */
+  border: 1px solid #2ecc71;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+/* Styling for the login page background */
+.login-background {
+    background-image: url('../../assets/CarParking.jpg'); /* Add your image path */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh; /* Ensure the background covers the whole viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

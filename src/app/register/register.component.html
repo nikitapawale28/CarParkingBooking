@@ -1,0 +1,42 @@
+<header class="app-header">
+  <h1>Book Your Car Parking</h1>
+</header>
+  <div class="login-background">
+  <div class="register-container">
+    <main>
+      <h2>Register</h2>
+      <form (ngSubmit)="register()" class="register-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" [(ngModel)]="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="password" required><br>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required><br>
+        <div *ngIf="passwordMismatch" class="error-message">
+          Password and Confirm Password do not match!
+      </div>
+      <div *ngIf="passwordErrors.length > 0" class="error-message">
+        {{ passwordErrors.join(', ') }}
+    </div>
+    <div *ngIf="serverError" class="error-message">
+     {{errorMsgFromServer}}
+  </div>
+  <div *ngIf="invalidUsername" class="error-message">
+    Invalid username format. Please use the format XXX@gmail.com.
+</div>
+    <div *ngIf="registrationSuccess" class="success-message">
+      Registration successful! You can now log in.
+  </div><br>
+        <button type="submit" class="register-button">Register</button>
+      </form>
+      <p class="login-link">Already have an account? <a href="#">Login</a></p>
+
+    </main>
+  </div>
+</div>
+ 
+  
+  <footer class="app-footer">
+    <p>&copy; 2023 My Login App. All rights reserved.</p>
+  </footer>
+  

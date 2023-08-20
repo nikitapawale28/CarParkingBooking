@@ -1,0 +1,28 @@
+<header class="app-header">
+  <h1>BookCarParking.com</h1>
+</header>
+<div class="login-background">
+<div class="login-container">
+  <main>
+    <h2>Login</h2>
+    <form (ngSubmit)="login()" class="login-form">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" [(ngModel)]="username" required><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"  [(ngModel)]="password" required><br>
+
+      <div *ngIf="serverError" class="error-message">
+        {{errorMsgFromServer}}
+     </div>
+     
+      <button type="submit" class="login-button">Login</button>
+    </form>
+   
+    <p class="signup-link">Don't have an account? <a href="/register">Sign Up</a></p>
+  </main>
+</div>
+</div>
+
+<footer class="app-footer">
+  <p>&copy; 2023 Nikita Dalvi's App. All rights reserved.</p>
+</footer>

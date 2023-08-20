@@ -1,0 +1,110 @@
+<header class="app-header">
+    <h1>BookCarParking.com</h1>
+    <div class="notification-container">
+        <div class="notification-content">
+          Click on parking lot square to see the details and to book the parking lot.
+        </div>
+      </div>
+  </header>
+
+<div class="tabs-container">
+    <div class="tabs">
+        <button class="tab-button" (click)="setActiveTab('home')" [ngClass]="{ 'active': currentTab === 'home' }">Home</button>
+        <button class="tab-button" (click)="setActiveTab('account'); fetchAccountInformation()" [ngClass]="{ 'active': currentTab === 'account' }">Account</button>
+        <button class="tab-button" (click)="logout()">Logout</button>
+    </div>
+   
+    <div class="tab-content">
+        <ng-container *ngIf="currentTab === 'home'">
+            <h2>Parking Map</h2>
+            <div class="parking-map">
+              <div
+                class="parking-lot"
+                *ngFor="let parking of parkingLots"
+                [ngClass]="{ 'booked': parking.booking_status,
+                            'available': !parking.booking_status }"
+                (click)="showParkingDetails(parking)"
+              >
+                
+              </div>
+
+              
+            </div>
+            <div *ngIf="selectedParking" class="parking-details">
+              <h3>Parking Lot {{ selectedParking.id }} Details</h3>
+              <p>Status: {{ selectedParking.booking_status ? 'Booked' : 'Available' }}</p>
+              <div  *ngIf="selectedParking.booking_status">
+              <p>Booked at: {{ selectedParking.booked_at_string }}</p>
+              <p>Available at: {{ selectedParking.available_at_string }}</p>
+              </div>
+              <br>
+              <div class="parking-lot_second" *ngIf="!showBookingForm && !bookingSuccess &&!selectedParking.booking_status" (click)="showBookingForm = true">
+                
+                <button class="book-button">Book</button>
+              </div>
+              <div *ngIf="bookingSuccess" class="success-message">
+                {{bookingSuccessMsg}}
+             </div>
+              <div class="booking-form-container" *ngIf="showBookingForm">
+                <div class="booking-form">
+                  <h4>Enter Your Car Details</h4>
+                  <div class="form-group">
+                    <label for="car_model">Car Model:</label>
+                    <input type="text" id="car_model" name="car_model" [(ngModel)]="car_model">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="plate_number">Plate Number:</label>
+                    <input type="text" id="plate_number" name="plate_number"[(ngModel)]="plate_number">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="booking_duration">Booking Duration (hours):</label>
+                    <input type="number" id="booking_duration"  name="booking_duration" [(ngModel)]="booking_duration">
+                  </div>
+                  
+                  <div class="button-group">
+                    <button (click)="confirmBooking(selectedParking)">Confirm Booking</button>
+                    <button (click)="cancelBooking()">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="currentTab === 'account'">
+            <div class="account-info">
+              <h2>Account Information</h2>
+              <div class="account-details">
+                <p><strong>Username:</strong> {{ accountInformation.username }}</p>
+                <p><strong>Password:</strong> {{ accountInformation.password }}</p>
+              </div>
+          
+              <h3>Active Bookings</h3>
+              <div class="booking-list">
+                <div class="booking-item" *ngFor="let booking of accountInformation.activeBookings">
+                  <p><strong>Car Model:</strong> {{ booking.carModel }}</p>
+                  <p><strong>Plate Number:</strong> {{ booking.plateNumber }}</p>
+                  <p><strong>Booking Duration:</strong> {{ booking.bookingDuration }} hours</p>
+                  <p><strong>Booked At:</strong> {{ booking.bookedAt | date:'MMM d, y, h:mm a' }}</p>
+                  <p><strong>Available At:</strong> {{ booking.availableAt | date:'MMM d, y, h:mm a' }}</p>
+                </div>
+              </div>
+          
+              <h3>Past Bookings</h3>
+              <div class="booking-list">
+                <div class="booking-item" *ngFor="let booking of accountInformation.pastBookings">
+                  <p><strong>Car Model:</strong> {{ booking.carModel }}</p>
+                  <p><strong>Plate Number:</strong> {{ booking.plateNumber }}</p>
+                  <p><strong>Booking Duration:</strong> {{ booking.bookingDuration }} hours</p>
+                  <p><strong>Booked At:</strong> {{ booking.bookedAt | date:'MMM d, y, h:mm a' }}</p>
+                  <p><strong>Available At:</strong> {{ booking.availableAt | date:'MMM d, y, h:mm a' }}</p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+    </div>
+</div>
+
+<footer class="app-footer">
+    <p>&copy; 2023 Nikita Dalvi's App. All rights reserved.</p>
+  </footer>
